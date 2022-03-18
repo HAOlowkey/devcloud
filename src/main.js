@@ -17,6 +17,12 @@ import "element-ui/lib/theme-chalk/index.css";
 // 加载全局样式
 import "./styles/index.scss";
 
+// 加载全局指令
+import "./directives";
+
+// 加载全局过滤器
+import "./filters";
+
 Vue.use(Element, {
   // set element-ui default size
   size: Cookies.get("size") || "mini",

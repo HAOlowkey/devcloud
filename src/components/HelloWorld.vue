@@ -13,6 +13,21 @@
       <el-button type="danger">危险按钮</el-button>
     </el-row>
 
+    <div>
+      <el-input v-model="input" placeholder="请输入内容"></el-input>
+      <el-button
+        v-clipboard:copy="input"
+        v-clipboard:success="clipboardSuccess"
+        type="text"
+        icon="el-icon-document-copy"
+        style="padding: 0px; margin-left: 12px"
+      />
+    </div>
+
+    <div>
+      {{ ts | parseTime }}
+    </div>
+
     <p>
       For a guide and recipes on how to configure / customize this project,<br />
       check out the
@@ -119,6 +134,20 @@ export default {
   name: "HelloWorld",
   props: {
     msg: String,
+  },
+  data() {
+    return {
+      input: "",
+      ts: Date.now(),
+    };
+  },
+  methods: {
+    clipboardSuccess() {
+      this.$message({
+        type: "success",
+        message: "复制成功",
+      });
+    },
   },
 };
 </script>
