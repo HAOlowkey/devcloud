@@ -1,6 +1,8 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+
+    <svg-icon style="font-size: 42px" icon-class="tencent" />
     <p>
       For a guide and recipes on how to configure / customize this project,<br />
       check out the

@@ -5,6 +5,9 @@ import store from "./store";
 
 Vue.config.productionTip = false;
 
+// 加载 svg icons
+import "./icons";
+
 new Vue({
   router,
   store,
