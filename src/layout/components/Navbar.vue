@@ -69,13 +69,19 @@
 export default {
   name: "NavBar",
   data() {
-    return {
-      activeIndex: "dashboard",
-    };
+    return {};
+  },
+  computed: {
+    isCollapse() {
+      return this.$store.getters.sidebar.opened;
+    },
+    activeIndex() {
+      return this.$store.getters.system;
+    },
   },
   methods: {
-    changeSystem(index) {
-      this.activeIndex = index;
+    changeSystem(system) {
+      this.$store.dispatch("app/setSystem", system);
     },
   },
 };
