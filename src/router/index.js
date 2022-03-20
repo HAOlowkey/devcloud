@@ -14,6 +14,15 @@ const routes = [
     name: "Login",
     component: () => import("@/views/login/index"),
   },
+  {
+    path: "/404",
+    name: "NotFound",
+    component: () => import("@/views/error-page/404"),
+  },
+  {
+    path: "*",
+    redirect: "/404",
+  },
 ];
 
 const router = new VueRouter({
