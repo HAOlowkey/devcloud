@@ -1,0 +1,35 @@
+// 侧边栏宽度
+$sideBarWidth: 210px;
+
+// 顶栏高度
+$navbarHeight: 50px;
+
+#app {
+    .navbar-container {
+        display: flex;
+        position: fixed;
+        width:100vw;
+        height:$navbarHeight;
+        background: linear-gradient(to right, #8b8b8b, #3f3f3f);
+        box-shadow: 0 5px 5px -3px var(--cb-color-shadow,rgba(0,0,0,0.16));
+    }
+    
+    .app-wrapper {
+        padding-top: $navbarHeight;
+        height: calc(100vh - #{$navbarHeight});
+    }
+
+    .sidebar-container {
+        transition: width 0.28s;
+        width: $sideBarWidth !important;
+        float: left;
+    }
+
+    .main-container {
+        min-height: 100%;
+        transition: margin-left .28s;
+        margin-left: $sideBarWidth;
+        position: relative;
+        background-color: #f6f8fa;
+    }
+}
