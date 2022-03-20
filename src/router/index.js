@@ -1,13 +1,31 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import LayoutPage from "@/layout/index";
 
 Vue.use(VueRouter);
 
 const routes = [
+  // {
+  //   path: "/",
+  //   name: "Home",
+  //   component: () => import("@/views/dashboard/index"),
+  // },
   {
     path: "/",
-    name: "Home",
-    component: () => import("@/views/dashboard/index"),
+    component: LayoutPage,
+    redirect: "/dashboard",
+    children: [
+      {
+        path: "dashboard",
+        component: () => import("@/views/dashboard/index"),
+        name: "Dashboard",
+      },
+      {
+        path: "dashboard2",
+        component: () => import("@/views/dashboard/index2"),
+        name: "Dashboard2",
+      },
+    ],
   },
   {
     path: "/login",
