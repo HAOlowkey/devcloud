@@ -76,7 +76,7 @@ export default {
         }, 800);
       }
     },
-    check() {
+    loginCheck() {
       if (this.loginForm.username === "") {
         this.shake("username");
         return false;
@@ -87,9 +87,31 @@ export default {
       }
       return true;
     },
-    handleLogin() {
-      if (this.check()) {
-        console.log("check success");
+    async handleLogin() {
+      if (this.loginCheck()) {
+        this.loginLoading = true;
+        try {
+          // 调用后端接口进行登录, 状态保存到vuex中
+          await this.$store.dispatch("user/login", this.loginForm);
+
+          // 调用后端接口获取用户profile, 状态保存到vuex中
+          const user = await this.$store.dispatch("user/getInfo");
+          console.log(user);
+          console.log(this.$router);
+          // 更加用户的角色或者类型, 或的可以发的系统列表
+        } catch (err) {
+          // 如果登陆异常, 中断登陆逻辑
+          console.log(err);
+          return;
+        } finally {
+          this.loginLoading = false;
+        }
+
+        // 登陆成功, 重定向到Home或者用户指定的URL
+        this.$router.push({
+          path: this.$route.query.redirect || "/",
+          query: this.otherQuery,
+        });
       }
     },
     addEventListener() {
