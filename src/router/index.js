@@ -50,6 +50,7 @@ const router = new VueRouter({
   routes,
 });
 
+// 添加了登录守卫
 router.beforeEach(beforeEach);
 router.afterEach(afterEach);
 
