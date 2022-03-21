@@ -56,7 +56,7 @@
             <span class="dropdown-item-text">Github地址</span>
           </el-dropdown-item>
           <!-- 退出系统 -->
-          <el-dropdown-item divided>
+          <el-dropdown-item @click.native="logout" divided>
             <span style="display: block">退出登录</span>
           </el-dropdown-item>
         </el-dropdown-menu>
@@ -82,6 +82,10 @@ export default {
   methods: {
     changeSystem(system) {
       this.$store.dispatch("app/setSystem", system);
+    },
+    async logout() {
+      await this.$store.dispatch("user/logout");
+      this.$router.push({ path: "/login" });
     },
   },
 };
