@@ -2,6 +2,12 @@
   <div class="navbar">
     <!-- logo -->
     <div class="logo-container">
+      <hamburger
+        id="hamburger-container"
+        :is-active="isCollapse"
+        class="hamburger-container"
+        @toggleClick="toggleSideBar"
+      />
       <span>研发云</span>
     </div>
     <!-- 主导航栏 -->
@@ -66,8 +72,11 @@
 </template>
 
 <script>
+import Hamburger from "@/components/Hamburger";
+
 export default {
   name: "NavBar",
+  components: { Hamburger },
   data() {
     return {};
   },
@@ -86,6 +95,9 @@ export default {
     async logout() {
       await this.$store.dispatch("user/logout");
       this.$router.push({ path: "/login" });
+    },
+    toggleSideBar() {
+      this.$store.dispatch("app/toggleSideBar");
     },
   },
 };
@@ -125,7 +137,19 @@ export default {
   }
 }
 
+// .logo-container {
+//   box-sizing: border-box;
+//   width: 200px;
+//   color: rgba(255, 255, 255, 0.8);
+
+//   .title {
+//     font-size: 16px;
+//   }
+// }
+
 .logo-container {
+  display: flex;
+  align-items: center;
   box-sizing: border-box;
   width: 200px;
   color: rgba(255, 255, 255, 0.8);

@@ -21,10 +21,22 @@ const routes = [
         component: () => import("@/views/dashboard/index"),
         name: "Dashboard",
       },
+    ],
+  },
+  {
+    path: "/cmdb",
+    component: LayoutPage,
+    redirect: "/cmdb/search",
+    children: [
       {
-        path: "dashboard2",
+        path: "search",
+        component: () => import("@/views/dashboard/index"),
+        name: "search",
+      },
+      {
+        path: "hosts",
         component: () => import("@/views/dashboard/index2"),
-        name: "Dashboard2",
+        name: "hosts",
       },
     ],
   },
@@ -50,7 +62,7 @@ const router = new VueRouter({
   routes,
 });
 
-// 添加了登录守卫
+// 添加了导航守卫
 router.beforeEach(beforeEach);
 router.afterEach(afterEach);
 
