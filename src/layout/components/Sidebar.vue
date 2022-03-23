@@ -1,7 +1,7 @@
 <template>
   <div class="sidebar" :style="{ width: sidebarWidth }">
     <el-menu
-      default-active="/cmdb/search"
+      default-active="/cmdb/hosts"
       class="sidebar-el-menu"
       :collapse="isCollapse"
       router

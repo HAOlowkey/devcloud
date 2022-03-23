@@ -35,7 +35,7 @@ const routes = [
       },
       {
         path: "hosts",
-        component: () => import("@/views/dashboard/index2"),
+        component: () => import("@/views/host/index"),
         name: "hosts",
       },
     ],
