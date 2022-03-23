@@ -23,6 +23,9 @@ import "./directives";
 // 加载全局过滤器
 import "./filters";
 
+// 加载全局组件
+import "./components";
+
 Vue.use(Element, {
   // set element-ui default size
   size: Cookies.get("size") || "mini",
